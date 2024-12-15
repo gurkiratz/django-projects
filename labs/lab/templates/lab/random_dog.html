@@ -1,0 +1,10 @@
+{% extends "lab/layout.html" %}
+
+{% block content %}
+  <h1>Random Dog Image</h1>
+  {% if status == 'success' %}
+    <img src="{{image_url}}" alt="Random Dog Image">
+  {% else %}
+    <p>Failed to fetch dog image.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "lab/layout.html" %}
+
+{% block content %}
+  <h1>Generate QR Code</h1>
+  <form method="post" action="{% url 'lab:generate_qr_code' %}">
+    {% csrf_token %}
+    <label for="data">Enter Data for QR Code:</label>
+    <input type="text" id="data" name="data" required>
+    <button type="submit">Generate QR Code</button>
+  </form>
+
+  {% if request.method == "POST" %}
+    <h2>QR Code for: {{ data }}</h2>
+    <img src="{{ qr_code_url }}" alt="QR Code">
+  {% endif %}
+{% endblock %}

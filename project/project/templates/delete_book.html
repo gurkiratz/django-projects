@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}Delete Book{% endblock %}
+
+{% block content %}
+    <h1>Are you sure you want to delete the book: "{{ book.title }}"?</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+      <a href="{{ book.get_absolute_url }}">Cancel</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% comment %} Navbar to all pages {% endcomment %}
+<a href="{% url "movies:index" %}">Home Page</a>
+<br>
+{% comment %} In production, admin page is hidden {% endcomment %}
+<a href="/admin">Admin page</a>
+<br>
+<!-- Check if user is authenticated -->
+{% if request.user.is_authenticated %}
+    <a href="{% url 'movies:logout' %}">Logout</a>
+    <br>
+    <a href="{% url "movies:add_movie" %}">Add New Movie</a>
+    <br>
+{% else %}
+    <a href="{% url 'movies:login' %}">Login</a>
+    <br>
+    <a href="{% url 'movies:register' %}">Register</a>
+    <br>
+{% endif %}
+
+<br>

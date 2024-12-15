@@ -1,0 +1,19 @@
+{% extends "lab/layout.html" %}
+
+{% block content %}
+  {% if request.method == 'POST' and status == 'success' %}
+    <h1>Random Dog Images for Breed: {{breed}}</h1>
+    {% for image_url in images %}
+      <img src="{{image_url}}" alt="Dog Image">
+    {% endfor %}
+  {% else %}
+    <h1>Get Random Dog Images</h1>
+    <form method="post" action="{% url "lab:get_dog" %}">
+      {% csrf_token %}
+      <label for="breed">Enter Dog Breed:</label>
+      <input type="text" id="breed" name="breed" required maxlength=2000>
+      <button type="submit">Get Dog Images</button>
+    </form>
+    <p>Example breeds: African, Boxer, Hound, Pug</p>
+  {% endif %}
+{% endblock %}

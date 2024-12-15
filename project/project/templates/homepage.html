@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+    <h1>Welcome to the Bookstore</h1>
+    <p>Explore our collection of books!</p>
+    
+    <h2>Available Books</h2>
+    <ul>
+        {% for book in books %}
+            <li>
+                <a href="{% url 'book_detail' book.id %}"><strong>{{ book.title }}</strong></a> by {{ book.author }} <br>
+                <em>{{ book.year }}</em> | Rating: {{ book.rating }} <br>
+                <p>{{ book.description }}</p>
+            </li>
+        {% empty %}
+            <p>No books available.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

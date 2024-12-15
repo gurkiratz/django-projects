@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab 7</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    nav {
+      background-color: #f8f9fa;
+      padding: 10px;
+      display: flex;
+      gap: 16
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #007bff;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <b> <a href="{% url "lab:index" %}">Gurkirat - Lab 7</a> </b>
+    <a href="{% url "lab:index" %}">Home</a>
+    <a href="{% url "lab:greetings" %}">Greetings</a>
+    <a href="{% url "lab:now" %}">Current DateTime</a>
+    <a href="{% url "lab:get_xkcd" %}">Get XKCD</a>
+    <a href="{% url "lab:random_dog" %}">Random Dog</a>
+    <a href="{% url "lab:get_dog" %}">Get Dog Image</a>
+    <a href="{% url "lab:generate_qr_code" %}">Generate QR Code</a>
+  </nav>
+  {% block content %}
+  {% endblock %}
+</body>
+</html>
